@@ -1,5 +1,14 @@
 # Tutorial-1
 
+## Reflection 1
+
+Berdasarkan clean code principles, saya telah menerapkan Meaningful Names dimana memastikan pemberian nama variabel yang
+informatif sehingga tidak membingungkan pembaca. Selain itu, membuat function yang bernama jelas, ukuran kecil, dan 
+bekerja dengan hanya 1 tujuan. Lalu, tidak memberikan comment karena sudah cukup jelas dengan kode yang tertera. Kemudian,
+Memakai blank lines sehingga mempermudah dalam membaca kode. Setelah itu, tidak memanggil setter or getter terlalu sering
+sehingga nilai private variable tetap terjaga dari public. Berdasarkan secure coding practices, saya telah menerapkan
+input data validation sehingga harus memberikan input sesuai jenis field-nya. Untuk Authorization, semua orang bisa
+menggunakan karena tidak ada roles khusus.
 
 
 ## Getting started

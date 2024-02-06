@@ -16,12 +16,23 @@
     <tr>
       <th scope="col">Product Name</th>
       <th scope="col">Quantity</th>
+      <th scope="col">Edit Product</th>
+      <th scope="col">Delete Product</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="product: ${products}">
       <td th:text="${product.productName}"></td>
       <td th:text="${product.productQuantity}"></td>
+      <td>
+        <a th:href="@{/product/edit(productName=${product.productName},
+                                  productQuantity=${product.productQuantity})}"
+           class="btn btn-primary btn-sm mb-3">Edit</a>
+      </td>
+      <td>
+        <a th:href="@{/product/delete(productName=${product.productName})}"
+           class="btn btn-primary btn-sm mb-3">Delete</a>
+      </td>
     </tr>
     </tbody>
   </table>

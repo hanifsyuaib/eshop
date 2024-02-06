@@ -48,4 +48,10 @@ public class ProductController {
         service.edit(product);
         return "redirect:list";
     }
+
+    @GetMapping("/delete")
+    public String deleteProduct(@RequestParam String productName, Model model) {
+        service.delete(productName);
+        return "redirect:list";
+    }
 }

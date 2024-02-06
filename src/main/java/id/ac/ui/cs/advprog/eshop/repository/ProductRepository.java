@@ -29,9 +29,22 @@ public class ProductRepository {
 
             if (savedProductName.equals(newProductName)) {
                 savedProduct.setProductQuantity(newProductQuantity);
+                break;
+            }
+        }
+        return product;
+    }
+
+    public String delete(String productName) {
+        for (Product savedProduct : productData) {
+            String savedProductName = savedProduct.getProductName();
+
+            if (savedProductName.equals(productName)) {
+                productData.remove(savedProduct);
+                break;
             }
         }
 
-        return product;
+        return productName;
     }
 }

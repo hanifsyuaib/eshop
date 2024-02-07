@@ -10,6 +10,18 @@ sehingga nilai private variable tetap terjaga dari public. Berdasarkan secure co
 input data validation sehingga harus memberikan input sesuai jenis field-nya. Untuk Authorization, semua orang bisa
 menggunakan karena tidak ada roles khusus.
 
+## Reflection 2
+
+Menurut saya hal tersebut tidak bagus untuk dilakukan pada functional test yang baru dibuat. Kode yang baru dibuat
+dapat menurunkan kualitas keseluruhun kode. Dengan setup procedures dan instance variables yang sama juga dapat
+terjadinya duplikasi pada kode. Dampak dari duplikasi kode akan menyulitkan dalam melakukan mantain kode dan meningkatkan
+kemungkinan terjadi error saat perubahan pada salah satu functional test terutama bagian setup procedure. Improvement
+yang terpikirkan adalah dengan membuat reusable method untuk setup procedures dan instance variables sehingga
+tidak perlu melakukan duplikasi kode. Selain itu, dengan menggunakan setup procedures dan instance variables yang sama
+bisa menghadirkan test yang tidak ada hubungannya sama sekali. Hal ini dapat mengalihkan fokus dari pekerjaan test 
+semestinya. Improvement yang dapat dilakukan adalah dengan menghapus atau memindahkan ke test tersendiri sehingga 
+test bisa fokus dalam verifikasi jumlah item didalam list product.
+
 
 ## Getting started
 

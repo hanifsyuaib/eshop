@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -56,4 +57,15 @@ class CreateProductFunctionalTest {
         // Verify
         assertEquals("Create New Product", headerMessage);
     }
+
+    @Test
+    void clickButton_create_isCorrect(ChromeDriver driver) throws Exception {
+        // Exercise
+        driver.get(baseUrl);
+
+        // Click on the element
+        WebElement checkInput = driver.findElement(By.name("checkbox_input"));
+        checkInput.click();
+    }
+
 }

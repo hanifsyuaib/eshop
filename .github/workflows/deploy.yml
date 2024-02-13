@@ -18,7 +18,4 @@ jobs:
         uses: koyeb/action-git-deploy@v1
         with:
           app-name: eshop-hanifsyuaib
-          git-builder: docker
-          git-docker-dockerfile: Dockerfile
-          privileged: true
-          skip-cache: true
+          

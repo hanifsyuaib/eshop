@@ -61,7 +61,6 @@ jobs:
             # mandatory
             -Dsonar.projectKey=hanifsyuaib_eshop
             -Dsonar.organization=hanifsyuaib
-            -Dsonar.projectBaseDir=/eshop
             -Dsonar.sources=src/main/java
             -Dsonar.tests=src/test/java
             -Dsonar.python.coverage.reportPaths=coverage.xml

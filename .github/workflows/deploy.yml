@@ -18,8 +18,6 @@ jobs:
         uses: koyeb/action-git-deploy@v1
         with:
           app-name: eshop-hanifsyuaib
-          service-ports: "8000:http"
-          service-routes: "/:8000"
           git-builder: docker
           git-docker-dockerfile: Dockerfile
           privileged: true

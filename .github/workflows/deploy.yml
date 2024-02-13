@@ -9,19 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Install and configure the Koyeb CLI
+      - name: Install, configure, build, and deploy the Koyeb CLI
         uses: koyeb-community/install-koyeb-cli@v2
         with:
-          api_token: "${{ secrets.KOYEB_API_TOKEN }}"
-
-      - name: Build and deploy the application
-        uses: koyeb/action-git-deploy@v1
-        with:
-          app-name: eshop-hanifsyuaib
-          service-ports: "8080:http"
-          service-routes: "/:8080"
-          git-builder: docker
-          git-docker-dockerfile: Dockerfile.koyeb
-          privileged: true
-          skip-cache: true
-          
+          api_token: "${{ secrets.KOYEB_API_TOKEN }}"   

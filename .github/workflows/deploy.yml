@@ -9,13 +9,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Login to Koyeb
-        run: koyeb login --token ${{ secrets.KOYEB_API_TOKEN }}
-      - name: Build and push Docker image
-        run: |
-          docker build -t hanifsyuaib/eshop .
-          docker push hanifsyuaib/eshop
-      - name: Deploy to Koyeb
-        run: koyeb stack deploy hanifsyuaib --image hanifsyuaib/eshop
+      - name: Install and configure the Koyeb CLI
+        uses: koyeb-community/install-koyeb-cli@v2
+        with:
+          api_token: "${{ secrets.KOYEB_API_TOKEN }}"
+
+      - name: Build and deploy the application
+        uses: koyeb/action-git-deploy@v1
+        with:
+          app-name: eshop-${{ github.ref_name }}
+          service-ports: "8000:http"
+          service-routes: "/:8000"
+          git-builder: docker
+          git-docker-dockerfile: Dockerfile
+          privileged: true
+          skip-cache: true

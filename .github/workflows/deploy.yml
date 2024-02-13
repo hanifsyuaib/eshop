@@ -1,0 +1,27 @@
+name: Deploy to Koyeb
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Authenticate with Koyeb CLI (Assuming you have Koyeb CLI installed)
+      - name: Login to Koyeb
+        run: koyeb login --token ${{ secrets.KOYEB_API_TOKEN }}
+
+      # Build and push Docker image
+      - name: Build and push Docker image
+        run: |
+          docker build -t hanifsyuaib/eshop .
+          docker push hanifsyuaib/eshop
+
+      # Deploy to Koyeb
+      - name: Deploy to Koyeb
+        run: koyeb stack deploy hanifsyuaib --image hanifsyuaib/eshop

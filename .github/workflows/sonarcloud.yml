@@ -41,11 +41,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: List files in workspace
-        run: |
-          ls $GITHUB_WORKSPACE
+      - name: Check out the Git repository
+        uses: actions/checkout@v4
+      - name: Build project
+        uses: ./gradlew build
       - name: Analyze with SonarCloud
-
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
         uses: SonarSource/sonarcloud-github-action@v2.1.1
@@ -59,7 +59,6 @@ jobs:
             # mandatory
             -Dsonar.projectKey=hanifsyuaib_eshop
             -Dsonar.organization=hanifsyuaib
-            -Dsonar.projectBaseDir=/github/workspace/eshop
             -Dsonar.sources=src/main/java
             -Dsonar.tests=src/test/java
             -Dsonar.python.coverage.reportPaths=coverage.xml

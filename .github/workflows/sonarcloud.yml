@@ -72,9 +72,6 @@ jobs:
             # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
             -Dsonar.projectKey=hanifsyuaib_eshop
             -Dsonar.organization=hanifsyuaib
-            -Dsonar.sources=src/main/java
-            -Dsonar.tests=src/test/java
-            -Dsonar.python.coverage.reportPaths=coverage.xml
       - name: Build
         run: ./gradlew build sonar --info
       

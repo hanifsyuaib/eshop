@@ -1,3 +1,32 @@
+# Tutorial-2
+
+## Reflection
+
+1. Pertama, duplikasi "redirect:list" sebanyak 3 kali. Hal ini membuat setiap perubahan terjadi saya harus mengganti 
+sebanyak tiga kali. Code smell ini memiliki severity berupa critical. Dengan begitu, saya memutuskan untuk memakai 
+constant bernama REDIRECT_TO_LIST sehingga setiap perubahan yang diinginkan cukup dilakukan sekali saja pada 
+constant REDIRECT_TO_LIST.
+    
+    Kedua dan ketiga saya memperbaiki permasalahan yang sama, yaitu pemakaian field injection (@Autowired).
+Field injection bisa bikin pembuatan object menjadi invalid state dan membuat testing lebih susah. Selain itu,
+tidak compatible dengan field final dan dependencies tidak bisa explicit ketika instantiating sebuah class yang
+memakai field injection. Code smell ini memiliki severity berupa major. Oleh karena itu, saya menyelasaikan masalah
+ini dengan menggantikan field injection dengan constructor injection. Karena dependencies nya explicit dan dipakai
+ketika object construction, sehingga menghindari instantiating object yang invalid state dan testing menjadi lebih mudah.
+
+
+2. Iya, untuk continuous integration telah menjalankan build dan testing dengan berhasil secara otomatis setiap commit.
+Selain itu, integrasi dengan version control berhasil juga ditandai dengan build dan testing bekerja setiap commit.
+Untuk continuous deployment telah berhasil menjalankan deployment secara otomatis setiap commit setelah 
+menjalankan build dan test terlebih dahulu. Proses integration dilakukan di branch bukan main, yaitu ci-cd dan 
+module-2-exercise. Proses Depolyment dilakukan di satu branch utama, yaitu main. Pada branch main, semua unit test
+berhasil berjalan dan code bisa dianalisis oleh sonarcloud serta deployment ke koyeb berhasil bisa diakses secara publik.
+
+Note: Pada code coverage, dimulai dari 50% (Tutorial 1). Setelah penambahan unit test menjadi 99% (jacoco report) atau
+97.2% (sonarcloud). Kini menjadi 97.3% (sonarcloud) setelah fix code quality issue. 
+Untuk URL app adalah https://eshop-hanifsyuaib.koyeb.app/
+
+
 # Tutorial-1
 
 ## Reflection 1

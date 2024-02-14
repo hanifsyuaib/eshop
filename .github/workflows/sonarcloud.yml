@@ -62,6 +62,8 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: Set gradlew as executable
         run: chmod +x ./gradlew
+      - name: Build
+        run: ./gradlew build sonar --info
       - name: Analysis
         uses: SonarSource/sonarcloud-github-action@v2.1.1
         env:
@@ -72,7 +74,5 @@ jobs:
             # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
             -Dsonar.projectKey=hanifsyuaib_eshop
             -Dsonar.organization=hanifsyuaib
-      - name: Build
-        run: ./gradlew build sonar --info
       
             

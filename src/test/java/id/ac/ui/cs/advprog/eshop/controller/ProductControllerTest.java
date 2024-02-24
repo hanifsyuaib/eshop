@@ -21,27 +21,29 @@ class ProductControllerTest {
 
     @InjectMocks
     ProductController productController;
+    Product product;
+    Product product2;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
+
+        this.product = new Product();
+        this.product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        this.product.setProductName("Sampo Cap Bambang");
+        this.product.setProductQuantity(100);
+
+        this.product2 = new Product();
+        this.product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        this.product2.setProductName("Sampo Cap Usep");
+        this.product2.setProductQuantity(99);
     }
 
     @Test
     void testProductListPageViewNameAndModel() {
         List<Product> products = new ArrayList<>();
 
-        Product product1 = new Product();
-        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product1.setProductName("Sampo Cap Bambang");
-        product1.setProductQuantity(100);
-
-        Product product2 = new Product();
-        product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product2.setProductName("Sampo Cap Usep");
-        product2.setProductQuantity(50);
-
-        products.add(product1);
+        products.add(product);
         products.add(product2);
 
         when(productService.findAll()).thenReturn(products);
@@ -61,30 +63,29 @@ class ProductControllerTest {
 
     @Test
     void testCreateProductPostRedirectsToListPage() {
-        String viewName = productController.createProductPost(new Product(), mock(Model.class));
+        String viewName = productController.createProductPost(product, mock(Model.class));
 
         assertEquals("redirect:list", viewName);
     }
 
     @Test
     void testEditProductPageViewName() {
-        String productId = "eb558e9f-1c39-460e-8860-71af6af63bd6";
         Model model = mock(Model.class);
-        String viewName = productController.editProductPage(productId, model);
+        String viewName = productController.editProductPage(product.getProductId(), model);
 
         assertEquals("EditProduct", viewName);
     }
 
     @Test
     void testEditProductPostRedirectsToListPage() {
-        String viewName = productController.editProductPost(new Product(), mock(Model.class));
+        String viewName = productController.editProductPost(product, mock(Model.class));
 
         assertEquals("redirect:list", viewName);
     }
 
     @Test
     void testDeleteProductRedirectsToListPage() {
-        String viewName = productController.deleteProduct("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        String viewName = productController.deleteProduct(product.getProductId());
 
         assertEquals("redirect:list", viewName);
     }

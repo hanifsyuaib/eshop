@@ -55,7 +55,7 @@ public class ProductController {
         return REDIRECT_TO_LIST;
     }
 
-    @GetMapping("/delete")
+    @PostMapping("/delete")
     public String deleteProduct(@RequestParam("productId") String productId) {
         service.deleteProductById(productId);
         return REDIRECT_TO_LIST;

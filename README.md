@@ -1,3 +1,34 @@
+# Tutorial-3
+
+## Reflection
+1. Pada project eshop, saya telah menerapkan Single responsibility principle (SRP), Open-closed principle (OCP), 
+Liskov-substitution principle (LSP), Interface segregation principle(ISP), dan Dependency iversion principle(DIP). 
+SRP telah diterapkan pada setiap class termasuk pada testing dan CarController telah dipindahkan menjadi file tersendiri.
+OCP telah diterapkan pada controller, service, repository, dan model. LSP telah diterapkan pada service. ISP telah 
+diterapkan pada Controller dan Service. DIP telah diterapkan pada controller dan service.
+
+2. Penerapan SRP dapat memberi keuntungan untuk mempermudah membaca kode dan maintain kode, contohnya pada productService
+dan carService dimana create,edit,dan delete terpisah sehingga mudah dipahami. Penerapan OCP dapat memberi keuntungan
+untuk menambah kemampuan kode sekaligus mengurangi resiko bugs, contohnya jika ada yang ingin ditambahkan selain yang udah
+ada maka bisa langsung saja ditambahkan ke controller, service, repository, dan model. Penerapan LSP dapat memberi 
+keuntungan untuk penukaran antara child atau parent class tidak akan membuat program error, contohnya pada 
+car controller yang menginherit product controller. Penerapan ISP dapat memberi keuntungan untuk cukup membuat interface
+yang diperlukan dimana hal ini mirip seperti SRP, contohnya pada product service dan car service memuat interface yang
+bekerja hanya sesuai dengan fungsionalitasnya saja. Penerapan DIP dapat memberi keuntungan untuk bergantung pada 
+abstraction daripada implementasi seperti objek, contohnya controller dan service bergantung pada interface product service
+dan car service.
+
+3. Tidak menerapkan SRP dapat membuat class dengan banyak pekerjaan untuk sulit dipahami dan mantain, contohnya
+controller bisa saja mengurus bagian business logic juga yang tentunya akan lebih sulit di mantain dan test.
+Tidak menerapkan OCP dapat berakibat memunculkan bugs yang semulanya tidak ada, contohnya penambahan fitur baru pada
+product dan car dengan mengubah seluruh kode termasuk outputnya dapat memunculkan bugs yang seharusnya tidak muncul.
+Tidak menerapkan LSP dapat memunculkan error, contohnya menukar objek class car dengan product dapat memunculkan error.
+Tidak menerapkan ISP dapat memunculkan code bloat dengan adanya method-method yang tidak dipakai, contohnya terdapat
+banyak interface yang tidak terpakai pada car service dan product service. Tidak menerapkan DIP dapat memunculkan
+coupling menjadi tinggi dan fleksibilitas kode menurun, contohnya controller langsung membuat objek repository dimana
+hal ini dapat membuat sulit untuk disubsitusi dengan repository lainnya dan sulit dalam melakukan testing.
+
+
 # Tutorial-2
 
 ## Reflection

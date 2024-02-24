@@ -18,6 +18,10 @@ public class CarRepository {
             car.setCarId(uuid.toString());
         }
 
+        if (car.getCarQuantity() < 0) {
+            car.setCarQuantity(0);
+        }
+
         carData.add(car);
         return car;
     }
@@ -42,7 +46,12 @@ public class CarRepository {
                 // Update the existing car with the new information
                 car.setCarName(updatedCar.getCarName());
                 car.setCarColor(updatedCar.getCarColor());
-                car.setCarQuantity(updatedCar.getCarQuantity());
+
+                if (updatedCar.getCarQuantity() < 0) {
+                    car.setCarQuantity(0);
+                } else {
+                    car.setCarQuantity(updatedCar.getCarQuantity());
+                }
                 return car;
             }
         }

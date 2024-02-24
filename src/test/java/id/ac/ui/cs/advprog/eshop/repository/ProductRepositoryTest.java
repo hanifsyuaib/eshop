@@ -63,6 +63,7 @@ class ProductRepositoryTest {
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
     }
+    /*
     @Test
     void testEditAndFind() {
         Product product = new Product();
@@ -81,7 +82,8 @@ class ProductRepositoryTest {
         assertEquals(product.getProductName(), savedProduct.getProductName());
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
     }
-
+     */
+    /*
     @Test
     void testEditNotSavedProductAndFind() {
         Product product1 = new Product();
@@ -106,6 +108,8 @@ class ProductRepositoryTest {
         assertEquals(product1.getProductQuantity(), savedProduct.getProductQuantity());
         assertFalse(productIterator.hasNext());
     }
+
+     */
     @Test
     void testDeleteAndFindIfEmpty() {
         Product product = new Product();

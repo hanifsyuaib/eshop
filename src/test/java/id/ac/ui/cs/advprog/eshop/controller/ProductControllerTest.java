@@ -68,10 +68,9 @@ class ProductControllerTest {
 
     @Test
     void testEditProductPageViewName() {
-        String productName = "Sampo Cap Bambang";
-        int productQuantity = 100;
+        String productId = "eb558e9f-1c39-460e-8860-71af6af63bd6";
         Model model = mock(Model.class);
-        String viewName = productController.editProductPage(productName, productQuantity, model);
+        String viewName = productController.editProductPage(productId, model);
 
         assertEquals("EditProduct", viewName);
     }
@@ -85,7 +84,7 @@ class ProductControllerTest {
 
     @Test
     void testDeleteProductRedirectsToListPage() {
-        String viewName = productController.deleteProduct("Sampo Cap Bambang", mock(Model.class));
+        String viewName = productController.deleteProduct("eb558e9f-1c39-460e-8860-71af6af63bd6");
 
         assertEquals("redirect:list", viewName);
     }

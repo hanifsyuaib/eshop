@@ -14,8 +14,10 @@ class ProductTest {
         this.product.setProductName("Sampo Cap Bambang");
         this.product.setProductQuantity(100);
 
-        this.product2 = new Product("Sampo Cap Usep",50);
+        this.product2 = new Product();
         this.product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        this.product2.setProductName("Sampo Cap Ucep");
+        this.product2.setProductQuantity(50);
     }
     @Test
     void testGetProductId() {

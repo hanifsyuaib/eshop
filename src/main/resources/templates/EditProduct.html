@@ -10,16 +10,21 @@
 <div class="container">
   <h3>Edit Product</h3>
 
-  <form th:action="@{/product/edit}" th:object="${product}" method="post">
-    <div class="form-group">
-      <label for="nameInput">Name</label>
-      <input th:field="*{productName}" type="text" class="form-control mb-4 col-4" id="nameInput" placeholder="Enter product' name">
+  <form th:action="@{/product/edit}" method="post" th:object="${product}" class="max-w-md bg-white p-6 rounded-md shadow-md">
+    <input type="hidden" th:field="*{productId}" />
+    <div class="mb-4">
+      <label for="productName" class="block text-sm font-medium text-gray-600">Product Name</label>
+      <input type="text" id="productName" th:field="*{productName}" name="productName" th:value="${product.productName}" class="mt-1 p-2 w-full border rounded-md">
     </div>
-    <div class="form-group">
-      <label for="quantityInput">Quantity</label>
-      <input th:field="*{productQuantity}" type="text" class="form-control mb-4 col-4" id="quantityInput" placeholder="Enter product' name">
+
+    <div class="mb-4">
+      <label for="productQuantity" class="block text-sm font-medium text-gray-600">Product Quantity</label>
+      <input th:field="*{productQuantity}" type="number" id="productQuantity" name="productQuantity" th:value="${product.productQuantity}" class="mt-1 p-2 w-full border rounded-md">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <div class="flex justify-end">
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Save Changes</button>
+    </div>
   </form>
 </div>
 

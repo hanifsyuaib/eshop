@@ -46,7 +46,7 @@ class OrderTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", order.getId());
         assertEquals(1708560000L, order.getOrderTime());
-        assertEquals("Safira Sudrajat", order.getaAuthor());
+        assertEquals("Safira Sudrajat", order.getAuthor());
         assertEquals("WAITING_PAYMENT", order.getStatus());
 
     }
@@ -78,7 +78,7 @@ class OrderTest {
     void testSetStatusToInvalidStatus() {
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b",
                 this.products, 1708560000L, "Safira Sudrajat");
-        assertThrows(IllegalArgumentException.class, () -> order.setStatus("MEOW"))
+        assertThrows(IllegalArgumentException.class, () -> order.setStatus("MEOW"));
     }
 
 }

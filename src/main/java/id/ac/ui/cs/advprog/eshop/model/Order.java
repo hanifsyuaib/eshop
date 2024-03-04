@@ -32,6 +32,7 @@ public class Order {
 
     public  Order(String id, List<Product> products, Long orderTime, String author, String status) {
         this(id, products, orderTime, author);
+
         this.setStatus(status);
     }
 

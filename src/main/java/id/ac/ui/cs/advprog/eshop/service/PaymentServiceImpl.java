@@ -18,10 +18,46 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment addPayment(Order order, String method, Map<String,String> paymentData) {
         if (paymentRepository.getPayment(order.getId()) == null) {
-            paymentRepository.addPayment(order, method, paymentData);
-            return new Payment(order.getId(), method, "SUCCESS", paymentData);
+            if (paymentData.containsKey("address")
+                    && paymentData.containsKey("deliveryFee")) {
+
+                return addCashOnDeliveryPayment(order, method, paymentData);
+            }
+
+            return addVoucherCodePayment(order, method, paymentData);
         }
         return null;
+    }
+
+    private Payment addCashOnDeliveryPayment(Order order, String method, Map<String,String> paymentData) {
+        if (paymentData.containsValue("")
+                || paymentData.containsValue(null)) {
+            paymentRepository.addPayment(order, method, paymentData);
+            Payment payment = paymentRepository.getPayment(order.getId());
+            payment = paymentRepository.setStatus(payment, "REJECTED");
+            return new Payment(order.getId(), method, "REJECTED", paymentData);
+        }
+        paymentRepository.addPayment(order, method, paymentData);
+        return new Payment(order.getId(), method, "SUCCESS", paymentData);
+    }
+
+    private  Payment addVoucherCodePayment(Order order, String method, Map<String,String> paymentData) {
+        if (isNotValidVoucherCode(paymentData.get("voucherCode"))) {
+            paymentRepository.addPayment(order, method, paymentData);
+            Payment payment = paymentRepository.getPayment(order.getId());
+            payment = paymentRepository.setStatus(payment, "REJECTED");
+            return new Payment(order.getId(), method, "REJECTED", paymentData);
+        }
+
+        paymentRepository.addPayment(order, method, paymentData);
+        return new Payment(order.getId(), method, "SUCCESS", paymentData);
+    }
+
+    private boolean isNotValidVoucherCode(String voucherCode) {
+        return voucherCode == null ||
+                voucherCode.length() != 16 ||
+                !voucherCode.startsWith("ESHOP") ||
+                !voucherCode.substring(5).matches("\\d{8}");
     }
 
     @Override

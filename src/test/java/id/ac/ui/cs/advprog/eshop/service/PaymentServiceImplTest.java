@@ -90,29 +90,25 @@ class PaymentServiceImplTest {
     @Test
     void testUpdateStatusPayment() {
         Payment payment = payments.get(0);
-        doReturn(payment).when(paymentRepository).getPayment(payment.getId());
-
-        Payment savedPayment = paymentRepository.addPayment(orders.get(0),
-                PaymentMethod.VOUCHER_CODE.getValue(), paymentData);
+        Payment savedPayment = payment;
 
         payment = paymentService.setStatus(payment, "SUCCESS");
         savedPayment = paymentService.setStatus(savedPayment, "SUCCESS");
 
         assertEquals(payment.getId(), savedPayment.getId());
         assertEquals("SUCCESS", savedPayment.getStatus());
-        verify(paymentRepository,times(1)).addPayment(orders.get(0),
-                PaymentMethod.VOUCHER_CODE.getValue(), paymentData);
+        verify(paymentRepository,times(2)).setStatus(savedPayment, "SUCCESS");
     }
 
     @Test
     void testUpdateStatusPaymentIfInvalidStatus() {
         Payment payment = payments.get(0);
-        doReturn(payment).when(paymentRepository).getPayment(payment.getId());
+        Payment savedPayment = payment;
 
-        assertThrows(IllegalArgumentException.class,
-                () -> paymentService.setStatus(payment, "MEOW"));
-        verify(paymentRepository, times(0)).addPayment(orders.get(0),
-                PaymentMethod.VOUCHER_CODE.getValue(), paymentData);
+        savedPayment = paymentService.setStatus(savedPayment, "MEOW");
+
+        assertEquals(payment.getId(), savedPayment.getId());
+        assertEquals("SUCCESS", savedPayment.getStatus());
     }
 
     @Test

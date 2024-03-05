@@ -1,3 +1,19 @@
+# Tutorial-4
+
+## Reflection
+1. Iya, TDD flow sangat berguna dalam proses pemrograman untuk saya. Pada awalnya saat buat tes sebelum implementasi
+kode, saya berekspektasi semua tes saya akan failed dan ternyata benar. Hal ini membantu saya dalam memberikan output
+sesuai ekspektasi saya dan membuat terpikirkan untuk implementasi bisa passed semua. Hal yang sama terjadi ketika 
+setelah implementasi, saya mengharapkan semua tes passed dan ternyata benar semuanya passed. Pada pembuatan test, 
+saya berusaha untuk membuat test case happy dan unhappy untuk mencakup semua kemungkinan yang dapat terjadi.
+
+2. Dalam pembuatan tes, saya mencoba untuk selalu mengacu pada F.I.R.S.T. principle. Pada aspek Fast, tesnya berjalan
+dengan cepat dan unit test terpisah dari functional test. Pada unit test memakai stubs/mock di unit test. Pada aspek 
+Isolated, tes telah dibuat dengan tidak bergantung dan tidak menggangu tes lainnya. Pada aspek Repeatable, tes telah
+berjalan dengan lancar dan menghasilkan output yang selalu konsisten. Pada aspek Self-validating, assertion yang dipakai
+dapat dipahami dengan mudah ketika dibaca. Lalu, tesnya bersifat tegas dimana hasilnya pasti antara passed atau failed.
+
+
 # Tutorial-3
 
 ## Reflection

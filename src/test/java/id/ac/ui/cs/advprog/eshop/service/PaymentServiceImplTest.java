@@ -92,12 +92,12 @@ class PaymentServiceImplTest {
         Payment payment = payments.get(0);
         Payment savedPayment = payment;
 
-        payment = paymentService.setStatus(payment, "SUCCESS");
-        savedPayment = paymentService.setStatus(savedPayment, "SUCCESS");
+        payment = paymentService.setStatus(payment, PaymentStatus.SUCCESS.getValue());
+        savedPayment = paymentService.setStatus(savedPayment, PaymentStatus.SUCCESS.getValue());
 
         assertEquals(payment.getId(), savedPayment.getId());
-        assertEquals("SUCCESS", savedPayment.getStatus());
-        verify(paymentRepository,times(2)).setStatus(savedPayment, "SUCCESS");
+        assertEquals(PaymentStatus.SUCCESS.getValue(), savedPayment.getStatus());
+        verify(paymentRepository,times(2)).setStatus(savedPayment, PaymentStatus.SUCCESS.getValue());
     }
 
     @Test
@@ -108,7 +108,7 @@ class PaymentServiceImplTest {
         savedPayment = paymentService.setStatus(savedPayment, "MEOW");
 
         assertEquals(payment.getId(), savedPayment.getId());
-        assertEquals("SUCCESS", savedPayment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), savedPayment.getStatus());
     }
 
     @Test

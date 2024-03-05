@@ -70,7 +70,7 @@ class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
 
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "VOUCHER_CODE", "SUCCESS", paymentData);
+                PaymentMethod.VOUCHER_CODE.getValue(), PaymentStatus.SUCCESS.getValue(), paymentData);
         assertEquals("ESHOP1234ABC5678", payment.getPaymentData().get("voucherCode"));
     }
 
@@ -81,7 +81,7 @@ class PaymentTest {
             paymentData.put("code", "ESHOP1234ABC5678");
 
             Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                    "VOUCHER_CODE", "SUCCESS", paymentData);
+                    PaymentMethod.VOUCHER_CODE.getValue(), PaymentStatus.SUCCESS.getValue(), paymentData);
         });
     }
 

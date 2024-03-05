@@ -1,6 +1,8 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
 import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +26,9 @@ class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
 
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "VOUCHER_CODE", "SUCCESS", paymentData);
+                PaymentMethod.VOUCHER_CODE.getValue(), PaymentStatus.SUCCESS.getValue(), paymentData);
 
-        assertEquals("VOUCHER_CODE", payment.getMethod());
+        assertEquals(PaymentMethod.VOUCHER_CODE.getValue(), payment.getMethod());
     }
 
     @Test
@@ -36,7 +38,7 @@ class PaymentTest {
             paymentData.put("voucherCode", "ESHOP1234ABC5678");
 
             Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                    "MEOW", "SUCCESS", paymentData);
+                    "MEOW", PaymentStatus.SUCCESS.getValue(), paymentData);
         });
     }
 
@@ -46,9 +48,9 @@ class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
 
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "VOUCHER_CODE", "SUCCESS", paymentData);
+                PaymentMethod.VOUCHER_CODE.getValue(), PaymentStatus.SUCCESS.getValue(), paymentData);
 
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -58,7 +60,7 @@ class PaymentTest {
             paymentData.put("voucherCode", "ESHOP1234ABC5678");
 
             Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                    "VOUCHER_CODE", "MEOW", paymentData);
+                    PaymentMethod.VOUCHER_CODE.getValue(), "MEOW", paymentData);
         });
     }
 
